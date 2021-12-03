@@ -1,12 +1,21 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Navbar, NavbarBrand } from 'reactstrap';
+import Directory from './components/DirectoryComponent';
 
-function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Navbar dark color="primary">
+          <div className="container">
+            <NavbarBrand href="/">Kevin-P-Fleming</NavbarBrand>
+          </div>
+        </Navbar>
+        <Directory />
+      </div>
+    );
+  }  
 }
 
 export default App;
