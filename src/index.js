@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'typeface-open-sans';
+import 'typeface-roboto';
+import App from './App'; //must import App BELOW the type-face imports
 
 ReactDOM.render(
   <React.StrictMode>

@@ -3,12 +3,11 @@ body {
 }
 
 h1, h2, h3, .card-body>.card-title {
-  font-family: "Lobster", cursive;
+  font-family: "Roboto", cursive;
 }
 
 .card-title {
-  font-weight: 500;
-  font-size: 1.25rem;
+  font: 500 1.25rem "Roboto", cursive;
 }
 
 h2 {

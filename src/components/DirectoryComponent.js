@@ -1,56 +1,54 @@
 import React, { Component } from 'react';
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class Directory extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            websites: [
-                {
-                    id: 0,
-                    name: 'React-NuCampsite',
-                    image: '/assets/images/nucamp-pic.jpeg',
-                    elevation: 1233,
-                    description: "A Fictitious Mock-E-Commerce site based on selling and reserving campsites."
-                },
-                {
-                    id: 1,
-                    name: 'Shamrock-Music',
-                    image: '/assets/images/shamrock.jpeg',
-                    elevation: 877,
-                    description: "A Mock E-Commerce site based on music lessons, classes, and music education in general."
-                },
-                {
-                    id: 2,
-                    name: 'KPA-Alterations',
-                    image: '/assets/images/kpa-alteration.jpeg',
-                    elevation: 2901,
-                    description: "A basic contact/display site for a local business in Downtown Athens."
-                },
-                {
-                    id: 3,
-                    name: 'Shop-It',
-                    image: '/assets/images/e-commerce-pic.jpeg',
-                    elevation: 42,
-                    description: "A Mock E-commerce site based on arbitrary products."
-                }
-            ],
+            selectedWebsite: null
         };
     }
 
-    render() {
-        const directory = this.state.websites.map(website => {
+    onWebsiteSelect(website) {
+        this.setState({selectedWebsite: website});
+    }
+
+    renderSelectedWebsite(website) {
+        if(website) {
             return(
-                <div className="col">
-                    <img src={website.image} alt={website.name} />
-                    <h2>{website.name}</h2>
-                    <p>{website.description}</p>
+                <Card className="text-center">
+                    <CardImg top src={website.image} alt={website.name} />
+                    <CardBody>
+                        <CardTitle>{website.name}</CardTitle>
+                        <CardText>{website.description}</CardText>
+                    </CardBody>
+                </Card>
+            );
+        }
+        return <div />
+    }
+
+    render() {
+        const directory = this.props.websites.map(website => {
+            return(
+                <div key={website.id} className="col-md-5 m-1 mt-5 text-align-center">
+                    <Card onClick={() => this.onWebsiteSelect(website)}>
+                        <CardImg width="100%" src={website.image} alt={website.name} />
+                        <CardImgOverlay>
+                            <CardTitle className="text-center">{website.name}</CardTitle>
+                        </CardImgOverlay>
+                    </Card>
                 </div>
             );
         });
+
         return (
             <div className="container">
                 <div className="row">
                     {directory}
+                </div>
+                <div className="col-md-5 m-1">
+                    {this.renderSelectedWebsite(this.state.selectedWebsite)}
                 </div>
             </div>
         );
